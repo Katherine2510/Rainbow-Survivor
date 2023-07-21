@@ -83,6 +83,7 @@
      <Compile Include="Assets\Script\PlayerMovement.cs" />
      <Compile Include="Assets\CodeMonkey\CMDebug.cs" />
      <Compile Include="Assets\CodeMonkey\Utils\FunctionPeriodic.cs" />
+     <Compile Include="Assets\Script\EnemyAnimation.cs" />
      <None Include="Assets\DOTween\readme.txt" />
      <None Include="Assets\CodeMonkey\README.txt" />
     <Reference Include="UnityEngine">

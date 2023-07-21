@@ -10,43 +10,29 @@ public class CharacterMovement : MonoBehaviour
     private Transform holdPosition;
     private Animator anim;
     [SerializeField] private int _doneBlocks = 3;
-
     public Transform Player;
     public Transform TargetZone;
-
     private int _okBlocks = 0;
-
     public bool isWin = false;
-
     [SerializeField] private GameObject gameController;
-
     public Text DoneBlock;
     public float flySpeed = 5f;
-
     public List<Transform> pickedBlocks = new List<Transform>(); 
-    
-
     Vector3 postionBlock = Vector3.zero;
     public string blockTag = "Block";
     public float distanceThreshold = 10f;
-
     public float heightOfBlock = 1f;
    
-    
-
     private bool isTargeZone = false;
    void Start() {
         anim = GetComponent<Animator>();
         anim.SetBool("isRunning", false);
         DoneBlock.text = _okBlocks + "/" + _doneBlocks;   
-        Vector3 pickedPosition = holdPosition.position;
-        
-        
+        Vector3 pickedPosition = holdPosition.position; 
     }
     private void Awake()
     {
-        holdPosition = transform.Find("Holding");
-        
+        holdPosition = transform.Find("Holding");       
     }
 
     private void Update()
@@ -56,8 +42,7 @@ public class CharacterMovement : MonoBehaviour
         if (isWin)
         {
         Player.position = new Vector3( TargetZone.position.x, TargetZone.position.y + heightOfBlock/2f, TargetZone.position.z) ;
-        // gameController.GetComponent<GameController>().StopCoroutine(StartCountDown);
-        
+        // gameController.GetComponent<GameController>().StopCoroutine(StartCountDown);       
         gameController.GetComponent<GameController>().StartDelayBeforeWin();
         }
     }
@@ -73,7 +58,6 @@ public class CharacterMovement : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
- 
     }  
 
 
@@ -129,7 +113,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void RealeaseBlock (List<Transform> pickedBlocks){
          GameObject targetObject = GameObject.FindGameObjectWithTag("TargetZone");
-      
          if (isHoldingBlock && isTargeZone) {
             foreach (Transform item in pickedBlocks)
             {
@@ -137,12 +120,12 @@ public class CharacterMovement : MonoBehaviour
                 item.transform.SetParent(null);
                 item.transform.position = targetposition;  
                 DoneBlock.text = pickedBlocks.Count + "/" + _doneBlocks;  
-                isHoldingBlock = false;
-              
+                isHoldingBlock = false;      
             }
          }
          if (pickedBlocks.Count == _doneBlocks && !isWin && isTargeZone) {
                 isWin = true;
+                anim.SetBool("isWin", true);
                 //Debug.Log(isWin);
             }
     }

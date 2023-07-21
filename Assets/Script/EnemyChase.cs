@@ -7,24 +7,24 @@ public class EnemyChase : MonoBehaviour
 {
     private float wanderRadius = 1000f;
     private float wanderTimer = 3;
- 
     [SerializeField] private Transform target;
-    
     [SerializeField] private MeshRenderer Box;
     private NavMeshAgent agent;
     private Transform enemy;
     private float timer;
     public float stoppingDistance = 1f;
-
     [SerializeField] private GameObject gameController;
     private Vector3 previousPosition;
     [SerializeField] private GameObject _characterMovement;
+    public GameObject animatorEnemy;
 
     void OnEnable () {
+
         agent = GetComponent<NavMeshAgent> ();
         enemy = GetComponent<Transform> ();
         previousPosition = Box.transform.position;
         timer = wanderTimer;
+        animatorEnemy.GetComponent<EnemyAnimation>().PlayRun();
     }
  
     // Update is called once per frame
@@ -46,9 +46,12 @@ public class EnemyChase : MonoBehaviour
             //Xử kiện né đi hướng khác
         }
         else if (distance <= stoppingDistance && !_characterMovement.GetComponent<CharacterMovement>().isWin)
-        {
-            
+        {   
              gameController.GetComponent<GameController>().AreCatched();
+        }
+        
+         if (lengthBetween.sqrMagnitude < 9 && (!Box.enabled || Box.transform.position != previousPosition)) {
+             animatorEnemy.GetComponent<EnemyAnimation>().PlayCatch();
         }
         previousPosition = Box.transform.position;
     }

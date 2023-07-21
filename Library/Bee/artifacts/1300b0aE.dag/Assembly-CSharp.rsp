@@ -389,6 +389,7 @@
 "Assets/Script/ChangeFormat.cs"
 "Assets/Script/CharacterMovement.cs"
 "Assets/Script/DirecVector.cs"
+"Assets/Script/EnemyAnimation.cs"
 "Assets/Script/EnemyChase.cs"
 "Assets/Script/EnemyFollow.cs"
 "Assets/Script/ExtentionFuction.cs"
