@@ -4164,6 +4164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 4139804180335364771}
   _character: {fileID: 3869401484419911893}
+  _body: {fileID: 318950809898829382}
   _speed: {fileID: 191077579}
   _magnet: {fileID: 365366499}
   _changeCam: {fileID: 909554151}
@@ -8510,6 +8511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 737351757353158172}
+  - component: {fileID: 737351757353158173}
   m_Layer: 0
   m_Name: Juanblend
   m_TagString: Untagged
@@ -8835,6 +8837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7082066942410148336}
   - component: {fileID: 2711404839106540856}
+  - component: {fileID: 7082066942410148337}
   m_Layer: 0
   m_Name: meo
   m_TagString: Untagged
@@ -9194,6 +9197,27 @@ Transform:
   m_Father: {fileID: 986606048185273330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &737351757353158173
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103663231221619878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a702b105a2526f442bc14f686523f763, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &740419137013272930
 GameObject:
   m_ObjectHideFlags: 0
@@ -13103,6 +13127,7 @@ MonoBehaviour:
   _boxSpeed: 3
   _moveSpeed: 7
   yourButton: {fileID: 708074872}
+  isBox: 0
 --- !u!33 &4139804179807730421
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16748,6 +16773,27 @@ Transform:
   m_Father: {fileID: 737351757353158172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7082066942410148337
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369711876401452431}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b6c62ec634d57a4abddb215b0fab7cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &7106746664038266031
 MeshRenderer:
   m_ObjectHideFlags: 0
