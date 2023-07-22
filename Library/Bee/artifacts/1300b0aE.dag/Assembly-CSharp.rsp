@@ -395,6 +395,7 @@
 "Assets/Script/ExtentionFuction.cs"
 "Assets/Script/GameController.cs"
 "Assets/Script/PlayerMovement.cs"
+"Assets/Script/RandBlock.cs"
 "Assets/Script/RandomMoveOfEnemy.cs"
 "Assets/Script/RotationCam.cs"
 -langversion:9.0

@@ -52,6 +52,7 @@
      <Compile Include="Assets\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
      <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
      <Compile Include="Assets\CodeMonkey\Utils\FunctionUpdater.cs" />
+     <Compile Include="Assets\Script\EnemyAnimation.cs" />
      <Compile Include="Assets\CodeMonkey\Utils\FunctionTimer.cs" />
      <Compile Include="Assets\Script\EnemyFollow.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
@@ -83,7 +84,7 @@
      <Compile Include="Assets\Script\PlayerMovement.cs" />
      <Compile Include="Assets\CodeMonkey\CMDebug.cs" />
      <Compile Include="Assets\CodeMonkey\Utils\FunctionPeriodic.cs" />
-     <Compile Include="Assets\Script\EnemyAnimation.cs" />
+     <Compile Include="Assets\Script\RandBlock.cs" />
      <None Include="Assets\DOTween\readme.txt" />
      <None Include="Assets\CodeMonkey\README.txt" />
     <Reference Include="UnityEngine">
