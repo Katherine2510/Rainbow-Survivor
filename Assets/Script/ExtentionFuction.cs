@@ -17,7 +17,7 @@ public class ExtentionFuction : MonoBehaviour
     public Button _changeCam;
     public CinemachineVirtualCamera Camera;
     public float maxRoom = 100;
-    public float startRoom =60;
+    public float startRoom = 60;
  
   
     Vector3 postionBlock = Vector3.zero;

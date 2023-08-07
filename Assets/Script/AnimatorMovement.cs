@@ -10,12 +10,10 @@ public class AnimatorMovement : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
     public void PlayIdle()
     {
         _animator.Play("Idle");
     }
-
     public void PlayRun()
     {
         _animator.Play("Run");

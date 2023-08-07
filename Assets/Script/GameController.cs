@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     // Start is called before the first frame update
-     public float gameDuration = 60f; // Thời lượng game (đơn vị: giây)
+   public float gameDuration = 120f; // Thời lượng game (đơn vị: giây)
+   public float readyTime = 10f;
     private float remainingTime; 
     public GameObject pnlWinGame;
     public GameObject pnlTimeUpGame;
@@ -17,10 +18,11 @@ public class GameController : MonoBehaviour
     public Button gotItBtn;
     public Button replayAfterCatched;
     public Button replayAfterTimeUp;
-
     public Button rePlayAfterWin;
     bool isWinToPnl;
     public GameObject CharacterMovement;
+    public GameObject Door1;
+    public GameObject Door2;
 
     void Start()
     {
@@ -35,16 +37,14 @@ public class GameController : MonoBehaviour
         replayAfterCatched.onClick.AddListener(Re_AreCatched);
         replayAfterTimeUp.onClick.AddListener(Re_Lose);
         rePlayAfterWin.onClick.AddListener(Re_Win);
-       
-
     }
 
     void Update()
     {
-         isWinToPnl = CharacterMovement.GetComponent<CharacterMovement>().isWin;
+        isWinToPnl = CharacterMovement.GetComponent<CharacterMovement>().isWin;
     }
     public void ResetGame() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         tutorial.SetActive(false);
         pnlWinGame.SetActive(false);
         pnlTimeUpGame.SetActive(false);
@@ -57,44 +57,43 @@ public class GameController : MonoBehaviour
         pnlWinGame.SetActive(true);
         PlayState.SetActive(false);
         //isWinToPnl = true;
-
     }
     public IEnumerator DelayedFunction()
     {
         yield return new WaitForSeconds(3f);
         Win();
     }
-
     public void StartDelayBeforeWin() {
         StartCoroutine(DelayedFunction());
     }
-
-  
     public void Re_Win() {
         ResetGame();
     }
-
+    public IEnumerator DelayedFunction1()
+    {
+        yield return new WaitForSeconds(3f);
+         if (!isWinToPnl){
+            //StartCoroutine(DelayedFunction1());
+            Debug.Log("AreCatched");
+            pnlCatchedGame.SetActive(true);
+            PlayState.SetActive(false);       
+        }
+    }
     public void Lose () {
+        
         if (!isWinToPnl){
             Debug.Log("Time up!!!!");
             pnlTimeUpGame.SetActive(true);
             PlayState.SetActive(false);
             
-        }
-        
+        }   
     }
-
     public void Re_Lose() {
         ResetGame();
     }
 
     public void AreCatched() {
-        if (!isWinToPnl){
-            Debug.Log("Time up!!!!");
-            pnlCatchedGame.SetActive(true);
-            PlayState.SetActive(false);
-           
-        }
+       StartCoroutine(DelayedFunction1());
         
     }
 
@@ -111,6 +110,21 @@ public class GameController : MonoBehaviour
         }
         Lose();
     }
+     public IEnumerator ReadyCountdown()
+    {
+        while (remainingTime > 0 && !isWinToPnl)
+        {
+            yield return new WaitForSeconds(1f);
+            remainingTime--;
+            UpdateCountdownText();
+        }
+        GameManagement.Instance.inReadyTime = false;
+        Door1.SetActive(false);
+        Door2.SetActive(false);
+        remainingTime = gameDuration;
+        StartCoroutine(StartCountdown());
+  
+    }
 
     private void UpdateCountdownText()
     {
@@ -120,9 +134,9 @@ public class GameController : MonoBehaviour
     }
 
     public void StartGame() {
+        remainingTime = readyTime;
+        StartCoroutine(ReadyCountdown());
         
-        remainingTime = gameDuration;
-        StartCoroutine(StartCountdown());
     }
     public void OnPlayState() {
 

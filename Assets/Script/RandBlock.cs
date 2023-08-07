@@ -9,12 +9,12 @@ public class RandBlock : MonoBehaviour
 
     void Start()
     {
-        if (randBlock.Count >= 3)
+        if (randBlock.Count >= 10)
         {
             List<int> selectedIndices = new List<int>();
 
             // Đặt ba khối
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int randomIndex;
                 do

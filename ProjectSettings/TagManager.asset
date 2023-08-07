@@ -10,6 +10,12 @@ TagManager:
   - TargetZone
   - DangerZone
   - Wall
+  - bot
+  - Enemy
+  - Gold
+  - Diamond
+  - Body
+  - Stair
   layers:
   - Default
   - TransparentFX
@@ -18,9 +24,9 @@ TagManager:
   - Water
   - UI
   - GroundLayer
-  - 
-  - 
-  - 
+  - TargetZone
+  - Wall
+  - Stair
   - 
   - 
   - 

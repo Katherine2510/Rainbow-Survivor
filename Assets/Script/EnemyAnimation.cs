@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
 {
-     private Animator _animator;
+     public Animator _animator;
 
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
 
     public void PlayRun()
     {

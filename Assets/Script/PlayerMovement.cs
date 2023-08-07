@@ -7,33 +7,24 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed = 10f;
     public float TurnSpeed = 2f;
     [SerializeField] private FloatingJoystick _joystick;
- 
     Vector2 InputAxes;
     float Angle;
     //float GroundDistance;
- 
     Quaternion TargetRotation;
     Transform MainCamera;
- 
     CharacterController Player;
      [SerializeField] private Transform _pivot;
-
-     public float gravity = 9.81f;
+    private float gravity = 9.81f;
     private Vector3 velocity;
 
     public Transform target; // Vị trí đích
-    
-
-  
-   
  
     void Start() {
         Player = GetComponent<CharacterController> ();
         MainCamera = Camera.main.transform;
-   
     }
  
-    private void Update()
+    private void FixedUpdate()
     {
         GetInput();
 
@@ -41,23 +32,30 @@ public class PlayerMovement : MonoBehaviour
         {
             CalculateDirection();
             Rotate();
-
+            float smoothness = 10f;
             Vector3 movement = transform.forward * MoveSpeed * Time.deltaTime;
             Player.Move(movement);
             Vector3 _pivotPosition =  this.transform.position;
-            _pivot.position = _pivotPosition;
-            // Áp dụng trọng lực
+            _pivot.position = Vector3.Lerp(_pivot.position, _pivotPosition, smoothness * Time.deltaTime);
             velocity.y -= gravity * Time.deltaTime;
         }
         else
         {
-        // Không có input từ joystick, không di chuyển
         velocity = Vector3.zero;
         }
-
-        // Áp dụng trọng lực
         Player.Move(velocity * Time.deltaTime);
-       
+        
+        /*GetInput();
+
+        // Tính toán vector di chuyển dựa trên input từ joystick
+        Vector3 moveDirection = new Vector3(InputAxes.x, 0f, InputAxes.y);
+        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection *= MoveSpeed;
+        // Áp dụng trọng lực
+        velocity.y -= gravity * Time.deltaTime;
+        // Áp dụng di chuyển vào Character Controller
+        Player.Move((moveDirection + velocity) * Time.deltaTime);
+       */
     }
  
     void GetInput() {
